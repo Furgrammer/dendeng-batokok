@@ -1,0 +1,380 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap");
+
+:root {
+  --merah-utama: #a02020;
+  --emas-aksen: #d4af37;
+  --hitam-teks: #2d2d2d;
+  --abu-background: #fdfdfd;
+}
+
+/* html {
+  scroll-behavior: smooth;
+} */
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  background-color: var(--abu-background);
+  color: var(--hitam-teks);
+}
+
+/* Header & Navigasi */
+header {
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  font-family: "Playfair Display", serif;
+  color: var(--merah-utama);
+  margin: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 15px 20px;
+}
+
+.logo {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--merah-utama);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: var(--emas-aksen);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: var(--hitam-teks);
+  font-weight: 500;
+  transition: 0.3s;
+  font-size: 0.95rem;
+}
+
+.nav-links li a:hover {
+  color: var(--merah-utama);
+}
+
+.btn-order {
+  background-color: var(--merah-utama);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.btn-order:hover {
+  background-color: #7a1818;
+  transform: scale(1.05);
+}
+
+/* --- RESPONSIVE MOBILE MENU --- */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  height: 3px;
+  width: 25px;
+  background-color: var(--merah-utama);
+  margin: 3px 0;
+  border-radius: 10px;
+}
+
+/* Hero Section - Menggunakan Gradasi */
+.hero {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("/assets/img/dendeng-batokok.webp"); /* Gambar Placeholder Food */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.hero h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+section,
+.container {
+  scroll-margin-top: 80px;
+}
+
+/* Layout Menu - Menggunakan Grid agar Rapi */
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  color: var(--merah-utama);
+  margin-bottom: 40px;
+}
+
+#menu,
+#lokasi,
+#faq {
+  scroll-margin-top: 100px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.menu-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-10px);
+}
+
+.menu-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.menu-info {
+  padding: 20px;
+}
+
+.menu-info h4 {
+  margin: 0 0 10px 0;
+  color: var(--merah-utama);
+  font-size: 1.2rem;
+}
+
+.price {
+  display: block;
+  color: var(--emas-aksen);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+/* Tombol WhatsApp Mengambang */
+.wa-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 3px #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 100;
+  animation: pulse 2s infinite;
+}
+
+.map-container {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.map-container p {
+  margin: 5px 0;
+  color: var(--hitam-teks);
+}
+
+.faq-section {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 15px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--merah-utama);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.faq-question::after {
+  content: "+";
+  font-size: 1.5rem;
+}
+
+.faq-answer {
+  max-height: 0; /* Mulai dari tinggi 0 */
+  overflow: hidden; /* Sembunyikan konten yang meluap */
+  opacity: 0;
+  transition:
+    max-height 0.5s ease,
+    opacity 0.3s ease,
+    padding 0.3s ease;
+  padding: 0 15px; /* Hilangkan padding bawah saat tertutup */
+  color: #555;
+}
+
+/* Saat FAQ aktif */
+.faq-item.active .faq-answer {
+  max-height: 200px; /* Beri angka yang cukup besar agar teks terlihat semua */
+  opacity: 1;
+  padding: 0 15px 15px 15px; /* Munculkan kembali padding bawah */
+}
+
+/* Animasi rotasi ikon + menjadi - atau x */
+.faq-question::after {
+  content: "+";
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question::after {
+  transform: rotate(45deg); /* Memberikan efek rotasi cantik */
+  color: var(--merah-utama);
+}
+
+/* Class persiapan untuk animasi muncul */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+/* Class saat element sudah terlihat di layar */
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+footer {
+  background: var(--merah-utama);
+  color: white;
+  text-align: center;
+  padding: 30px;
+  margin-top: 50px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: flex; /* Ubah dari none ke flex */
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background-color: white;
+
+    /* Animasi Sembunyi */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+
+    padding: 0 20px; /* Padding dinamis */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  /* Saat Navbar Aktif (diklik hamburger) */
+  .nav-links.active {
+    max-height: 400px; /* Sesuaikan dengan jumlah menu */
+    opacity: 1;
+    padding: 20px;
+  }
+
+  /* Animasi Hamburger Bar menjadi "X" */
+  .menu-toggle.open .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  .menu-toggle.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.open .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .bar {
+    transition: all 0.3s ease; /* Agar perubahan jadi X terlihat smooth */
+  }
+
+  .btn-order {
+    display: none; /* Sembunyikan tombol utama di navbar HP */
+  }
+
+  /* Opsi: Jika ingin menu samping muncul saat diklik, butuh JS tambahan */
+}
