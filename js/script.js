@@ -16,37 +16,21 @@ if (menuToggle) {
   });
 }
 
-// --- FUNGSI AUTO-SCROLL ULTRA SMOOTH ---
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
-    const targetId = this.getAttribute("href");
+    e.preventDefault();
 
-    // Lewati jika hanya "#"
+    const targetId = this.getAttribute("href");
     if (targetId === "#") return;
 
     const targetElement = document.querySelector(targetId);
 
     if (targetElement) {
-      // Mencegah browser melompat seketika
-      e.preventDefault();
-      e.stopPropagation(); // Mencegah interaksi lain mengganggu
-
       // Tutup menu mobile
       if (navLinks) navLinks.classList.remove("active");
       if (menuToggle) menuToggle.classList.remove("open");
 
-      // Hitung posisi target dengan kompensasi navbar (misal 80px)
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = targetElement.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      // Perintah Scroll Meluncur
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+      smoothScrollTo(targetElement, 1200); // durasi bisa diubah
     }
   });
 });
@@ -64,3 +48,60 @@ function reveal() {
 }
 window.addEventListener("scroll", reveal);
 reveal();
+
+// --- SMOOTH SCROLL PREMIUM (EASING) ---
+function smoothScrollTo(target, duration = 800) {
+  const start = window.pageYOffset;
+  const end = target.getBoundingClientRect().top + window.pageYOffset - 80; // offset navbar
+  const distance = end - start;
+
+  let startTime = null;
+
+  // Easing Function (easeInOutCubic)
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  function animation(currentTime) {
+    if (!startTime) startTime = currentTime;
+    const timeElapsed = currentTime - startTime;
+    const progress = Math.min(timeElapsed / duration, 1);
+
+    const easedProgress = easeInOutCubic(progress);
+
+    window.scrollTo(0, start + distance * easedProgress);
+
+    if (timeElapsed < duration) {
+      requestAnimationFrame(animation);
+    }
+  }
+
+  requestAnimationFrame(animation);
+}
+
+// --- NAVBAR ACTIVE ON SCROLL ---
+const sections = document.querySelectorAll("section, .container[id]");
+const navLinksAll = document.querySelectorAll(".nav-links a");
+
+function setActiveLink() {
+  let currentSection = "";
+
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop - 120; // offset navbar
+    const sectionHeight = section.offsetHeight;
+
+    if (window.pageYOffset >= sectionTop) {
+      currentSection = section.getAttribute("id");
+    }
+  });
+
+  navLinksAll.forEach((link) => {
+    link.classList.remove("active");
+
+    if (link.getAttribute("href") === "#" + currentSection) {
+      link.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", setActiveLink);

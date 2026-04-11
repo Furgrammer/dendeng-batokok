@@ -7,9 +7,9 @@
   --abu-background: #fdfdfd;
 }
 
-/* html {
+html {
   scroll-behavior: smooth;
-} */
+}
 
 body {
   font-family: "Poppins", sans-serif;
@@ -146,12 +146,6 @@ section,
   font-size: 2rem;
   color: var(--merah-utama);
   margin-bottom: 40px;
-}
-
-#menu,
-#lokasi,
-#faq {
-  scroll-margin-top: 100px;
 }
 
 .menu-grid {
@@ -351,6 +345,23 @@ footer {
     max-height: 400px; /* Sesuaikan dengan jumlah menu */
     opacity: 1;
     padding: 20px;
+  }
+
+  .nav-links li a.active {
+    color: var(--merah-utama);
+    font-weight: 600;
+    position: relative;
+  }
+
+  .nav-links li a.active::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--merah-utama);
+    border-radius: 2px;
   }
 
   /* Animasi Hamburger Bar menjadi "X" */
